@@ -6,6 +6,10 @@
         {{--]) !!};--}}
 {{--</script>--}}
 
+@if( isset($loadStripe) )
+    <script src="https://js.stripe.com/v3/"></script>
+@endif
+
 <script>window.sitePhone = '{{ env('SITE_PHONE_NUMBER') }}'</script>
 
 <script src="https://widget.reviews.co.uk/rich-snippet-reviews-widgets/dist.js"></script>
