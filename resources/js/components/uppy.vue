@@ -56,7 +56,7 @@
             });
 
             uppy.on('upload-success', (file, body) => {
-                this.$emit('add-artwork', { name: file.name, s3Path: body.path } );
+                this.$emit('add-artwork', { name: file.name, s3Path: body.body.path } );
             });
 
         }
