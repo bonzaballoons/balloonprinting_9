@@ -8,7 +8,7 @@ class OptionChoiceItem extends Model
     public $timestamps = false;
 
     protected $casts = [
-        'price' => 'decimal'
+        'price' => 'decimal:2'
     ];
 
     public function optionChoice()
