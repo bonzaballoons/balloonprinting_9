@@ -28,6 +28,6 @@ class ContactUs extends Mailable
 
     public function build()
     {
-        return $this->from('info@balloonprinting.co.uk')->subject('Quote / Contact Us From '. $this->name .' at '. Carbon::now()->toDayDateTimeString() .' - BalloonPrinting.co.uk')->view('mail/contactEmail');
+        return $this->from('info@balloonprinting.co.uk', 'BALLOON PRINTING UK')->subject('Quote / Contact Us From '. $this->name .' at '. Carbon::now()->toDayDateTimeString() .' - BalloonPrinting.co.uk')->view('mail/contactEmail');
     }
 }

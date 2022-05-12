@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use App\Models\Website;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactUs;
 
 class GeneralPagesController extends Controller
 {
@@ -45,7 +46,7 @@ class GeneralPagesController extends Controller
                 'customer_message' => 'required'
             ]);
 
-            Mail::to('info@balloonprinting.co.uk')->send(new \App\Mail\ContactUs( $request ) );
+            Mail::to('info@balloonprinting.co.uk')->send(new ContactUs( $request ) );
         }
 
         $data['mailSent'] = true;
