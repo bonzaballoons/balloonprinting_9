@@ -119,6 +119,8 @@ class OrderController extends Controller
         $data['meta_description'] = 'Balloon Printing Order Success';
         $data['orderId'] = session('orderId', false);
 
+        sleep(10);
+
         if( ! Order::checkIfAdminAlreadyRun($data['orderId']) ){
             $basket = session('basket');
             GoogleTagManager::set('conversionAmount', $basket->totalPrice);
