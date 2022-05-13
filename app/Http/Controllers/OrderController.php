@@ -4,12 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Website;
-use App\SagePay;
 use App\Models\Order;
-use App\OrderTools;
-use GoogleTagManager;
+use Spatie\GoogleTagManager\GoogleTagManager;
 use Illuminate\Support\Facades\Mail;
 use Stripe\Stripe;
+use App\Mail\BonzaConfirmationEmail;
 
 class OrderController extends Controller
 {
@@ -123,6 +122,7 @@ class OrderController extends Controller
         if( ! Order::checkIfAdminAlreadyRun($data['orderId']) ){
             $basket = session('basket');
             GoogleTagManager::set('conversionAmount', $basket->totalPrice);
+            Mail::to('info@customballoons.co.uk')->send( new BonzaConfirmationEmail( (array) $basket, (array) session('orderDetails'), $data['orderId'] ) );
             $request->session()->forget('basket');
         }
 
