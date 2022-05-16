@@ -81,9 +81,9 @@ class Order extends Model
         return $orderId;
     }
 
-    public static function checkIfAdminAlreadyRun($orderId) : bool {
+    public static function adminBeenDone($orderId) : bool {
 
-        return self::select('payment_status_id')->find($orderId)->payment_status_id === 4;
+        return self::select('email_sent')->find($orderId)->email_sent === 1;
     }
 
 

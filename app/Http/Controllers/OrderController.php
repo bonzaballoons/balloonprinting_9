@@ -119,13 +119,15 @@ class OrderController extends Controller
         $data['meta_description'] = 'Balloon Printing Order Success';
         $data['orderId'] = session('orderId', false);
 
-        sleep(10);
-
-        if( ! Order::checkIfAdminAlreadyRun($data['orderId']) ){
+        if( ! Order::adminBeenDone($data['orderId']) ){
             $basket = session('basket');
             GoogleTagManager::set('conversionAmount', $basket->totalPrice);
             Mail::to('info@customballoons.co.uk')->send( new BonzaConfirmationEmail( (array) $basket, (array) session('orderDetails'), $data['orderId'] ) );
             $request->session()->forget('basket');
+
+            $order = Order::find($data['orderId']);
+            $order->email_sent = 1;
+            $order->save();
         }
 
         return view('order/success', $data);
