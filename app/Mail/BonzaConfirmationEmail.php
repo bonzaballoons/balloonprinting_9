@@ -25,7 +25,6 @@ class BonzaConfirmationEmail extends Mailable
 
     public function build()
     {
-        $customerName = $this->orderDetails['customerBillingFirstName'] .' '. $this->orderDetails['customerBillingSecondName'];
-        return $this->from('info@balloonprinting.co.uk')->subject('Order Confirmation ID: '.$this->orderId.' - '.$customerName.' - BalloonPrinting.co.uk')->view('mail/bonzaConfirmationEmail');
+        return $this->from('info@balloonprinting.co.uk')->subject('Order Confirmation ID: '.$this->orderId.' - '.$this->orderDetails['customerContactFullName'].' - BalloonPrinting.co.uk')->view('mail/bonzaConfirmationEmail');
     }
 }

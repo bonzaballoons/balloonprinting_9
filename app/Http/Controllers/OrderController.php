@@ -30,7 +30,7 @@ class OrderController extends Controller
             'orderDetails' => get_object_vars( session('orderDetails') )
         ]);
 
-        $data['terms'] = Website::select('terms')->find( env('WEBSITE_ID') )->terms;
+        $data['terms'] = Website::find(env('WEBSITE_ID'))->terms;
         $data['page_js'] = ['orderDetails'];
 
         return view('order/details', $data);
@@ -122,7 +122,7 @@ class OrderController extends Controller
         if( ! Order::adminBeenDone($data['orderId']) ){
             $basket = session('basket');
             GoogleTagManager::set('conversionAmount', $basket->totalPrice);
-//            Mail::to('info@customballoons.co.uk')->send( new BonzaConfirmationEmail( (array) $basket, (array) session('orderDetails'), $data['orderId'] ) );
+            Mail::to('info@customballoons.co.uk')->send( new BonzaConfirmationEmail( (array) $basket, (array) session('orderDetails'), $data['orderId'] ) );
             $request->session()->forget('basket');
 
             $order = Order::find($data['orderId']);

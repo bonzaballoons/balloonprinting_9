@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 class Order extends Model
 {
     protected $table = 'orders';
+    const CREATED_AT = 't_create';
+    const UPDATED_AT = 't_update';
 
 	public function buyers()
 	{
