@@ -467,15 +467,6 @@ const latexWizard = new Vue({
         }
     },
 
-    // directives: {
-    //     'file-picker': {
-    //         bind(el) {
-    //             fileStackOptions.onUploadDone = (result) => bus.$emit('addArtwork', result);
-    //             $(el).on('click', () => fileStackClient.picker(fileStackOptions).open());
-    //         }
-    //     }
-    // },
-
     watch: {
 
         numberBalloons() {

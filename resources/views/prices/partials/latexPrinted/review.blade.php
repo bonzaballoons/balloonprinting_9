@@ -15,7 +15,7 @@
                 <a v-else href="javascript:" class="heading-secondary" @click="fixValidation(1)">None Selected - Click To Fix</a>
             </p>
 
-            <p>Ink Colours Selected:
+            <p v-if="printingOptionSelected.id !== 3">Ink Colours Selected:
                 <span v-if="pantone1234NameList" class="heading-tertiary">@{{ pantone1234NameList }}</span>
                 <a v-else href="javascript:" class="heading-secondary" @click="fixValidation(3)">Required For Price - Click To Fix</a>
             </p>

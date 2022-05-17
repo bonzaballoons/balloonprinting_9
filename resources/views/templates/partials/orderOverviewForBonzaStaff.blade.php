@@ -28,7 +28,7 @@ Customer Phone: <strong>{{ $orderDetails['customerContactPhone'] }}</strong><br>
             &nbsp;&nbsp;With the following delivery option: {{ $product->deliveryName }}
         @endif
         - <strong>£{{ number_format($product->totalPriceWithVat, 2) }}</strong>
-        <br>
+        <br><br>
     @endforeach
     <br>
     Delivery Date Chosen: <strong> {{ dbToUKDate( $basket['bonzaProductsDeliveryDate'] ) }}</strong>
@@ -55,7 +55,7 @@ Customer Phone: <strong>{{ $orderDetails['customerContactPhone'] }}</strong><br>
         End Date: <strong>{{ dbToUKDate($product->endDate) }}</strong><br>
         Additional Weeks: <strong>{{ $product->additionalWeeks }}</strong><br>
         - Total Price: <strong>£{{ number_format($product->totalPriceWithVat, 2) }}</strong>
-        <br>
+        <br><br>
     @endforeach
     <hr>
 @endif
@@ -78,7 +78,7 @@ Customer Phone: <strong>{{ $orderDetails['customerContactPhone'] }}</strong><br>
         <strong>Start date:</strong> {{ dbToUKDate($product->startDate) }}, <strong>End Date:</strong> {{ dbToUKDate($product->endDate) }}, <strong>Additional Weeks:</strong> {{ $product->additionalWeeks }}
         <br>
         - Total Price: <strong>£{{ number_format($product->totalPriceWithVat, 2) }}</strong>
-        <br>
+        <br><br>
     @endforeach
     <hr>
 @endif
@@ -101,7 +101,7 @@ Customer Phone: <strong>{{ $orderDetails['customerContactPhone'] }}</strong><br>
             - Ink Switch Pantone: <strong>{{ $product->inkSwitchPantone }}</strong>,<br>
         @endif
 
-        @if( $product->typeSelected->id === 3)
+        @if( $product->sides === 2 && $product->inkChanges !== 1)
             - Side 1 Pantone: <strong>{{ $product->side1Pantone }}</strong>,<br>
             - Side 2 Pantone: <strong>{{ $product->side2Pantone }}</strong>,<br>
         @else
@@ -133,7 +133,7 @@ Customer Phone: <strong>{{ $orderDetails['customerContactPhone'] }}</strong><br>
         @endif
 
         - Total Price: <strong>£{{ number_format($product->totalPriceWithVat, 2) }}</strong>
-        <br>
+        <br><br>
     @endforeach
     <hr>
 @endif
