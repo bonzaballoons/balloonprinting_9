@@ -147,7 +147,7 @@ class OrderController extends Controller
 
             GoogleTagManager::set('conversionAmount', $basket->totalPrice);
 
-            Mail::to('info@customballoons.co.uk')->send( new BonzaConfirmationEmail( (array) $basket, (array) $orderDetails, $data['orderId'] ) );
+            Mail::to('info@balloonprinting.co.uk')->send( new BonzaConfirmationEmail( (array) $basket, (array) $orderDetails, $data['orderId'] ) );
             Mail::to($orderDetails->customerContactEmail)->send( new CustomerConfirmationEmail($data['orderId'] ) );
 
             $request->session()->forget('basket');
