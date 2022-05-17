@@ -50,11 +50,11 @@ class PrintingPrices
     public static function foil($data) : array {
 
         $pricePerInkChange = 20;
-        $totalInkChanges =  $pricePerInkChange * $data['numberInkSwitches'];
+        $totalInkChangeCharge =  $pricePerInkChange * ($data['numberInkSwitches'] * $data['sides']);
         $screenPrice = self::getFoilScreenPrice( $data['sides'], $data['numberColours'], $data['sideDesignType'] );
         $totalBalloonPrice = self::getFoilPricePerBalloon($data) * $data['numberBalloons'];
 
-        $totalPriceWithoutVat =  $totalBalloonPrice + $screenPrice + $totalInkChanges;
+        $totalPriceWithoutVat =  $totalBalloonPrice + $screenPrice + $totalInkChangeCharge;
 
         $totalPriceWithVat = $totalPriceWithoutVat * 1.2;
         $pricePerBalloon = $totalPriceWithVat / $data['numberBalloons'];
