@@ -85,7 +85,7 @@ class Order extends Model
 
     public static function adminBeenDone($orderId) : bool {
 
-        return self::select('email_sent')->find($orderId)->email_sent === 1;
+        return self::find($orderId)->email_sent;
     }
 
 

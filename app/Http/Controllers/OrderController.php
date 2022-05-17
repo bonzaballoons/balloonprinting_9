@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\CustomerConfirmationEmail;
 use Illuminate\Http\Request;
 use App\Models\Website;
 use App\Models\Order;
@@ -140,9 +141,15 @@ class OrderController extends Controller
         $data['orderId'] = session('orderId', false);
 
         if( ! Order::adminBeenDone($data['orderId']) ){
+
             $basket = session('basket');
+            $orderDetails = session('orderDetails');
+
             GoogleTagManager::set('conversionAmount', $basket->totalPrice);
-            Mail::to('info@customballoons.co.uk')->send( new BonzaConfirmationEmail( (array) $basket, (array) session('orderDetails'), $data['orderId'] ) );
+
+            Mail::to('info@customballoons.co.uk')->send( new BonzaConfirmationEmail( (array) $basket, (array) $orderDetails, $data['orderId'] ) );
+            Mail::to($orderDetails->customerContactEmail)->send( new CustomerConfirmationEmail($data['orderId'] ) );
+
             $request->session()->forget('basket');
 
             $order = Order::find($data['orderId']);
