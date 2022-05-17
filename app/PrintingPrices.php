@@ -24,11 +24,11 @@ class PrintingPrices
         $priceJobCharge = $data['numberColours'] > 1 ? $data['numberColours'] * 3: 0;
         $pricePerBalloon = self::getLatexPricePerBalloon($data);
         $pricePerScreen = 40;
-        $pricePerInkChange = 10;
+        $pricePerInkChange = 20;
 
         $totalBalloonPrice = $pricePerBalloon * $data['numberBalloons'];
         $totalScreenPrice = $data['sides'] === 2 ? $pricePerScreen * 2 : $pricePerScreen * $data['numberColours']; // If 2 sides, you can only have one colour with 2 screens
-        $totalInkChanges =  $pricePerInkChange * $data['numberInkSwitches'];
+        $totalInkChanges =  $pricePerInkChange * ($data['numberInkSwitches'] * $data['sides']);
 
         $totalInkColourPrice = self::inkColourPriceWithoutVat( $data['inkColourNames'] );
 
@@ -49,7 +49,7 @@ class PrintingPrices
 
     public static function foil($data) : array {
 
-        $pricePerInkChange = 10;
+        $pricePerInkChange = 20;
         $totalInkChanges =  $pricePerInkChange * $data['numberInkSwitches'];
         $screenPrice = self::getFoilScreenPrice( $data['sides'], $data['numberColours'], $data['sideDesignType'] );
         $totalBalloonPrice = self::getFoilPricePerBalloon($data) * $data['numberBalloons'];
