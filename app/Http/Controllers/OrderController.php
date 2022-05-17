@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Website;
 use App\Models\Order;
-use Spatie\GoogleTagManager\GoogleTagManager;
+use GoogleTagManager;
 use Illuminate\Support\Facades\Mail;
 use Stripe\Stripe;
 use App\Mail\BonzaConfirmationEmail;
