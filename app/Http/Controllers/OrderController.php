@@ -50,6 +50,26 @@ class OrderController extends Controller
         Stripe::setApiKey( env('STRIPE_SECRET_KEY') );
 
         $lineItems = [];
+
+
+        foreach($basket->heliumHireCollections as $product){
+            $lineItems[] = [
+                'name' => $product->productName,
+                'amount' => round($product->totalPriceWithVat / $product->quantity, 2) * 100,
+                'currency' => 'gbp',
+                'quantity' => $product->quantity
+            ];
+        }
+
+        foreach($basket->heliumHireDeliveries as $product){
+            $lineItems[] = [
+                'name' => $product->productName,
+                'amount' => round($product->totalPriceWithVat / $product->quantity, 2) * 100,
+                'currency' => 'gbp',
+                'quantity' => $product->quantity
+            ];
+        }
+
         foreach($basket->bonzaProducts as $product){
             $lineItems[] = [
                 'name' => $product->productName,
