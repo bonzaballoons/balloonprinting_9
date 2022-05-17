@@ -122,7 +122,7 @@ class OrderController extends Controller
         if( ! Order::adminBeenDone($data['orderId']) ){
             $basket = session('basket');
             GoogleTagManager::set('conversionAmount', $basket->totalPrice);
-            Mail::to('info@customballoons.co.uk')->send( new BonzaConfirmationEmail( (array) $basket, (array) session('orderDetails'), $data['orderId'] ) );
+//            Mail::to('info@customballoons.co.uk')->send( new BonzaConfirmationEmail( (array) $basket, (array) session('orderDetails'), $data['orderId'] ) );
             $request->session()->forget('basket');
 
             $order = Order::find($data['orderId']);
