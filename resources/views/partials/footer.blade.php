@@ -10,7 +10,6 @@
                     <ul class="contact mt-3">
                         <li><p><i class="fa fa-map-marker"></i> <strong class="text-white">Address:</strong> Unit 6, Houghley Lane, Leeds, LS13 2DN</p></li>
                         <li><p><i class="fa fa-phone"></i> <strong class="text-white">Phone:</strong> {{ env('SITE_PHONE_NUMBER') }}, <strong>INT:</strong> {{ env('SITE_INT_PHONE_NUMBER') }}</p></li>
-                        <li><p><i class="fa fa-comments"></i><strong class="text-white">Chat Live:</strong> <a style="color: #777" href="{{ url('contact') }}">Click Here</a></p> </li>
                         <li><p><i class="fa fa-envelope"></i> <strong class="text-white">Email:</strong> info@balloonprinting.co.uk</p></li>
                     </ul>
                     <ul class="social-icons-custom mt-3">
@@ -75,7 +74,6 @@
                 <div class="col-lg-6">
                     <nav id="sub-menu">
                         <ul>
-                            <li><a target="_blank" href="https://lc.chat/now/6023681/">Chat Live With Us</a></li>
                             <li><a href="{{ url('info/faqs') }}">FAQ's</a></li>
                             <li><a href="{{ url('sitemap') }}">Sitemap</a></li>
                             <li><a href="{{ url('contact') }}">Contact</a></li>
