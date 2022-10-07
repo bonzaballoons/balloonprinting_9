@@ -10,6 +10,8 @@
     <script src="https://js.stripe.com/v3/"></script>
 @endif
 
+<script src="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.js"></script>
+
 <script>window.sitePhone = '{{ env('SITE_PHONE_NUMBER') }}'</script>
 
 <script src="https://widget.reviews.co.uk/rich-snippet-reviews-widgets/dist.js"></script>
