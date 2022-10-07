@@ -16,13 +16,7 @@
                         <nav class="header-nav-top">
                             <ul class="nav nav-pills">
                                 <li class="nav-item d-none d-sm-block">
-                                    <a class="nav-link" href="javascript:" data-toggle="modal" data-target="#whatsAppModal"><i class="fas fa-angle-right"></i> Contact by WhatsApp</a>
-                                </li>
-                                <li class="nav-item d-none d-sm-block">
                                     <span class="ws-nowrap"><i class="fas fa-phone"></i> {{ env('SITE_PHONE_NUMBER') }}</span>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-danger" href="{{ url('contact') }}"><i class="fas fa-angle-right"></i> Chat Live With Us</a>
                                 </li>
                             </ul>
                         </nav>
@@ -110,11 +104,6 @@
                                 <li>
                                     <a href="https://www.instagram.com/balloonprinting/" class="instagram_icon" target="_blank" title="Instagram">
                                         <i class="fab fa-instagram"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:" data-toggle="modal" data-target="#whatsAppModal" class="whatsapp_icon" title="WhatsApp">
-                                        <i class="fab fa-whatsapp"></i>
                                     </a>
                                 </li>
                                 <li>
