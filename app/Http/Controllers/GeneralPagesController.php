@@ -23,7 +23,6 @@ class GeneralPagesController extends Controller
         $data['navLink'] = 'contact';
         $data['meta_keywords'] = 'contact, us';
         $data['meta_description'] = 'Contact The Print Team';
-        $data['page_js'] = ['rocketChat'];
 
         return view('generalPages/contact', $data);
     }
@@ -34,7 +33,6 @@ class GeneralPagesController extends Controller
         $data['navLink'] = 'contact';
         $data['meta_keywords'] = 'Contact,Thanks,Thank,You';
         $data['meta_description'] = 'Successful Contact Us';
-        $data['page_js'] = ['rocketChat'];
 
         // Set the honey trap for spam bots
         if( empty( $request->input('customer_title') ) ){
