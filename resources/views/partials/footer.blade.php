@@ -19,11 +19,6 @@
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:" data-toggle="modal" data-target="#whatsAppModal" class="whatsapp_icon" title="WhatsApp">
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
-                        </li>
-                        <li>
                             <a href="https://www.linkedin.com/company/balloonprinting/" class="linkedin_icon" target="_blank" title="LinkedIn">
                                 <i class="fab fa-linkedin"></i>
                             </a>
