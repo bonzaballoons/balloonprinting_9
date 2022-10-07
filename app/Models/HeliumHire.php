@@ -37,7 +37,7 @@ class HeliumHire extends Product
         $cylinders = self::select('id', 'name', 'delivery_price', 'ap_collect_price', 'boc_collect_price', 'unit_price')
             ->join('productdetails', 'product.id', '=', 'productdetails.product_id')
             ->where('productdetails.website_id', env('WEBSITE_ID'))
-            ->orderBy('productdetails.delivery_price')
+            ->orderBy('productdetails.ap_collect_price')
             ->get();
 
         $balloonDetails = collect(self::$balloonDetails);
