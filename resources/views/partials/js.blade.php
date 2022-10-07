@@ -14,8 +14,6 @@
 
 <script>window.sitePhone = '{{ env('SITE_PHONE_NUMBER') }}'</script>
 
-<script src="https://widget.reviews.co.uk/rich-snippet-reviews-widgets/dist.js"></script>
-
 <script src="{{ mix('js/app.js') }}"></script>
 
 @if( isset($page_js) )
