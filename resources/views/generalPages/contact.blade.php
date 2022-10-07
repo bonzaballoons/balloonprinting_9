@@ -67,9 +67,7 @@
                     <li><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> Unit 6, Hilltop Commercial Centre, Houghley Lane, Leeds, LS13 2DN</li>
                     <li><i class="fas fa-phone"></i> <strong>Phone:</strong> {{ env('SITE_PHONE_NUMBER') }}</li>
                     <li><i class="fas fa-phone"></i> <strong>Int:</strong> {{ env('SITE_INT_PHONE_NUMBER') }}</li>
-                    <li><i class="fab fa-whatsapp whatsapp_icon"></i> <strong>WhatsApp:</strong> +44 07422 523391</li>
                     <li><i class="far fa-envelope"></i> <strong>Email:</strong> <a href="mailto:info@balloonprinting.co.uk">info@balloonprinting.co.uk</a></li>
-                    <li><i class="far fa-comments"></i> <strong>Chat Live:</strong>Please click on the red floating chat icon on the bottom right of your screen</li>
                 </ul>
 
                 <hr>
