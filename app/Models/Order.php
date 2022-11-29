@@ -40,7 +40,14 @@ class Order extends Model
 	    return $this->belongsTo('App\Models\OrderStatus', 'order_status_id');
 	}
 
-    public static function addOrder($basket, $orderDetails) {
+    public static function addOrder($basket, $orderDetails, $heliumSupplier) {
+
+
+        $sessionData = [
+            'orderDetails' => (array) $orderDetails,
+            'basket' => (array) $basket,
+            'heliumSupplier' => $heliumSupplier
+        ];
 
         #Insert Buyer
         $insert = [
@@ -58,6 +65,7 @@ class Order extends Model
             'payment_status_id' => 1,
             'total_cost' => $basket->totalPrice,
             'auth_id' => 1,
+            'temp_helium' => json_encode($sessionData),
             't_update' => Carbon::now(),
             't_create' => Carbon::now()
         ];
@@ -65,12 +73,7 @@ class Order extends Model
 
         DB::table('buyer_orders')->insert( ['buyer_id' => $buyerId, 'order_id' => $orderId] );
 
-        $data = [
-            'orderDetails' => (array) $orderDetails,
-            'basket' => (array) $basket
-        ];
-
-        $orderSummaryTemplate = view()->file( resource_path('views/templates/orderCmsOverview.blade.php'), $data)->render();
+        $orderSummaryTemplate = view()->file( resource_path('views/templates/orderCmsOverview.blade.php'), $sessionData)->render();
 
         $dataForModel = [
             'assoc_id' => $orderId,
@@ -82,11 +85,4 @@ class Order extends Model
 
         return $orderId;
     }
-
-    public static function adminBeenDone($orderId) : bool {
-
-        return self::find($orderId)->email_sent;
-    }
-
-
 }

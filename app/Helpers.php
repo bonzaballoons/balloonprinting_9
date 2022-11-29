@@ -28,3 +28,8 @@ function snake_case($value, $delimiter = '_')
 {
     return Str::snake($value, $delimiter);
 }
+
+function vatRemove($price, $vat = 20)
+{
+    return $price-($price * ($vat / 100));
+}

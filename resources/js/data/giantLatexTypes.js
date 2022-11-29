@@ -5,16 +5,26 @@ let giantLatexTypes = [
         colours: [
             { id: 1, name: 'Black', pantone: 'Black C', cssColour: '#000000' },
             { id: 2, name: 'Blue', pantone: '2925 C', cssColour: '#009CDE'},
-            { id: 3, name: 'Forest Green', pantone: '3268 C', cssColour: '#00AB8E' },
-            { id: 4, name: 'Fuchsia', pantone: '212 C', cssColour: '#F04E98'},
-            { id: 5, name: 'Lavender', pantone: '2645 C', cssColour: '#AD96DC'},
-            { id: 6, name: 'Lime Green', pantone: '360 C', cssColour: '#6CC24A'},
-            { id: 7, name: 'Orange', pantone: '1495 C', cssColour: '#FF8F1C'},
-            { id: 8, name: 'Pink', pantone: '1767 C', cssColour: '#FCAFC0'},
-            { id: 9, name: 'Red', pantone: '186 C', cssColour: '#C8102E'},
-            { id: 10, name: 'Sky Blue', pantone: '297 C', cssColour: '#71C5E8'},
-            { id: 11, name: 'White', pantone: '000 C', cssColour: '#FFFFFF'},
-            { id: 12, name: 'Yellow', pantone: '107 C', cssColour: '#FBE122'}
+            { id: 3, name: 'Fuchsia', pantone: '212 C', cssColour: '#F04E98'},
+            { id: 4, name: 'Lavender', pantone: '2645 C', cssColour: '#AD96DC'},
+            { id: 5, name: 'Lime Green', pantone: '360 C', cssColour: '#6CC24A'},
+            { id: 6, name: 'Orange', pantone: '1495 C', cssColour: '#FF8F1C'},
+            { id: 7, name: 'Pink', pantone: '1767 C', cssColour: '#FCAFC0'},
+            { id: 8, name: 'Red', pantone: '186 C', cssColour: '#C8102E'},
+            { id: 19, name: 'Sky Blue', pantone: '297 C', cssColour: '#71C5E8'},
+            { id: 10, name: 'White', pantone: '000 C', cssColour: '#FFFFFF'},
+            { id: 11, name: 'Yellow', pantone: '107 C', cssColour: '#FBE122'},
+            { id: 12, name: 'Feather Grey', pantone: '', cssColour: '#5b5e61'},
+            { id: 13, name: 'Cocoa Brown', pantone: '', cssColour: '#60443b'},
+            { id: 14, name: 'Almond', pantone: '', cssColour: '#b59f7c'},
+            { id: 15, name: 'Vanilla', pantone: '', cssColour: '#f6efdd'},
+            { id: 16, name: 'Purple', pantone: '', cssColour: '#5b4092'},
+            { id: 17, name: 'Night Blue', pantone: '', cssColour: '#283d99'},
+            { id: 18, name: 'Royal Blue', pantone: '', cssColour: '#0e67a8'},
+            { id: 19, name: 'Turquoise', pantone: '', cssColour: '#00b3b1'},
+            { id: 20, name: 'Leaf Green', pantone: '', cssColour: '#42984f'},
+            { id: 21, name: 'Bright Green', pantone: '', cssColour: '#60be78'},
+            { id: 22, name: 'Clear', pantone: '', cssColour: '#f5f5f5'},
         ]
     },
     {
@@ -30,7 +40,16 @@ let giantLatexTypes = [
             { id: 7, name: 'Pink', pantone: '236 C', cssColour: '#F1A7DC' },
             { id: 8, name: 'Red', pantone: '200 C', cssColour: '#BA0C2F' },
             { id: 9, name: 'Silver', pantone: '422 C', cssColour: '#9EA2A2' },
-            { id: 10, name: 'White', pantone: 'White C', cssColour: '#FFFFFF' }
+            { id: 10, name: 'White', pantone: 'White C', cssColour: '#FFFFFF' },
+            { id: 11, name: 'Black', pantone: '', cssColour: '#251a18' },
+            { id: 12, name: 'Almond', pantone: '', cssColour: '#9b8c61' },
+            { id: 13, name: 'Rose Gold', pantone: '', cssColour: '#ecba9f' },
+            { id: 14, name: 'Plum', pantone: '', cssColour: '#950c43' },
+            { id: 15, name: 'Fuchsia', pantone: '', cssColour: '#d74788' },
+            { id: 16, name: 'Lavender', pantone: '', cssColour: '#b2a7d2' },
+            { id: 17, name: 'Purple', pantone: '', cssColour: '#563e98' },
+            { id: 18, name: 'Royal Blue', pantone: '', cssColour: '#0356a7' },
+            { id: 19, name: 'Green', pantone: '', cssColour: '#6dc0b9' }
         ]
     }
 ];

@@ -48,7 +48,7 @@ Route::get('basket', 'BasketController@basket');
 
 Route::get('order/details','OrderController@details');
 Route::get('order/overview','OrderController@overview');
-Route::any('order/success','OrderController@success');
+Route::any('order/success/{orderID}','OrderController@success');
 Route::any('order/failure','OrderController@failure');
 
 Route::post('artwork', 'ArtworkController@store');

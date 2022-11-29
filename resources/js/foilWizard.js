@@ -106,7 +106,7 @@ const foilWizard = new Vue({
             this.colourSelected = colour;
             this.colourRemoveOption = removeOption;
             let folder = fromReview ? this.colourTypeChosen.folder : this.typeSelected.folder;
-            this.displayImgSrc = 'https://bballoons.s3.amazonaws.com/printingColours/foilPrintingWizard/'+folder+'/'+_.camelCase(this.colourSelected.name)+'.jpg';
+            this.displayImgSrc = 'https://bballoons.s3.amazonaws.com/printingColours/foilPrintingWizard/'+folder+'/jpg/'+_.snakeCase(this.colourSelected.name)+'.jpg';
 
             $('#colourPickerInfo').modal('show');
         },

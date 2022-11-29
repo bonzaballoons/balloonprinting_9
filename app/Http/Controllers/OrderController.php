@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\CustomerConfirmationEmail;
+use App\OrderTools;
 use Illuminate\Http\Request;
 use App\Models\Website;
 use App\Models\Order;
-use GoogleTagManager;
-use Illuminate\Support\Facades\Mail;
 use Stripe\Stripe;
-use App\Mail\BonzaConfirmationEmail;
 
 class OrderController extends Controller
 {
@@ -45,13 +42,15 @@ class OrderController extends Controller
 
         $basket = session('basket');
         $orderDetails = session('orderDetails');
-        $orderId = Order::addOrder($basket, $orderDetails);
+        $heliumSupplier = session('heliumSupplier', false);
+
+        $orderId = Order::addOrder($basket, $orderDetails, $heliumSupplier);
+
         session(['orderId' => $orderId]);
 
         Stripe::setApiKey( env('STRIPE_SECRET_KEY') );
 
         $lineItems = [];
-
 
         foreach($basket->heliumHireCollections as $product){
             $lineItems[] = [
@@ -80,7 +79,8 @@ class OrderController extends Controller
             ];
         }
 
-        $printProducts = $basket->printedLatexFromWizard + $basket->printedLatexGiantFromWizard + $basket->printedFoilFromWizard;
+        $printProducts = array_merge($basket->printedLatexFromWizard,$basket->printedLatexGiantFromWizard,$basket->printedFoilFromWizard);
+
 
         foreach($printProducts as $product){
             $lineItems[] = [
@@ -116,7 +116,7 @@ class OrderController extends Controller
             'client_reference_id' => $orderId,
             'payment_method_types' => ['card'],
             'line_items' => $lineItems,
-            'success_url' => url('order/success'),
+            'success_url' => url('order/success', ['orderID' => $orderId]),
             'cancel_url' => url('order/cancelled'),
         ]);
 
@@ -133,31 +133,21 @@ class OrderController extends Controller
         return view('order/overview', $data);
     }
 
-    public function success(Request $request)
+    public function success(Request $request, $orderID)
     {
         $data['title'] = 'Order Success - Balloon Printing UK';
         $data['meta_keywords'] = 'success, order';
         $data['meta_description'] = 'Balloon Printing Order Success';
-        $data['orderId'] = session('orderId', false);
 
-        if( ! Order::adminBeenDone($data['orderId']) ){
+        $data['orderId'] =  session('orderId', false);
 
-            $basket = session('basket');
-            $orderDetails = session('orderDetails');
-
-            GoogleTagManager::set('conversionAmount', $basket->totalPrice);
-
-            Mail::to('info@balloonprinting.co.uk')->send( new BonzaConfirmationEmail( (array) $basket, (array) $orderDetails, $data['orderId'] ) );
-            Mail::to($orderDetails->customerContactEmail)->send( new CustomerConfirmationEmail($data['orderId'] ) );
-
+        if( isset($orderID) && $data['orderId'] ){
+            OrderTools::executePostSuccessAdmin($orderID);
             $request->session()->forget('basket');
-
-            $order = Order::find($data['orderId']);
-            $order->email_sent = 1;
-            $order->save();
+            return view('order/success', $data);
         }
 
-        return view('order/success', $data);
+        return redirect('/');
     }
 
     public function cancelled(Request $request)

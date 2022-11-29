@@ -1,50 +1,45 @@
 <?php namespace App;
 
-use Illuminate\Support\Facades\DB;
+use App\Mail\BonzaConfirmationEmail;
+use App\Mail\CustomerConfirmationEmail;
+use App\Models\Order;
+use Illuminate\Support\Facades\Mail;
+use GoogleTagManager;
 
 class OrderTools
 {
 
-    // Todo - throw exception here if doesn't update
-    public static function updateOrderInfo($orderId, $crypt_values) : bool {
+    public static function executePostSuccessAdmin($orderId){
 
-        $data = ['total_cost' => $crypt_values['Amount'] ];
-        $data['payment_status_id'] = $crypt_values['Status'] === 'OK' ? 4 : 1;
+        $order = Order::find($orderId);
+        $runAdmin = $order && !$order->email_sent;
+        $basket = session('basket', false);
+        $orderDetails = (array) session('orderDetails');
 
-        return (bool) DB::table('orders')->where('id', $orderId)->update($data);
-    }
+        // First we check to see if session data is still there, this is to prevent errors when switching from two session only method.
+        // Can remove after a few weeks have passed as orders will always have had the session data saved to the order table.
+        // This also allows staff to input orders on website
 
-    // Example structure of vendor text code - brandName_orderID_randomKey
-    public static function getOrderIdFromVendorTxCode($vendorTxCode){
+        if($basket){
+            $basket = (array) $basket;
 
-        $txCode = explode('_', $vendorTxCode);
-        return $txCode[1];
-    }
+        }else if(!empty($order->temp_helium)){
+            $savedSessionData = json_decode($order->temp_helium);
+            $basket = $savedSessionData['basket'];
+            $orderDetails = $savedSessionData['orderDetails'];
 
-    // Todo - make phone number dynamic
-    public static function createErrorReasonSentence($status, $orderId) : string {
-
-        if ($status === 'NOTAUTHED') {
-            return 'You payment was declined by the bank. This could be due to insufficient funds, or incorrect card details. To avoid adding all your order details again, please give us a call on '.env('SITE_PHONE_NUMBER')." and quote reference: BP$orderId.";
+        }else{
+            $runAdmin = false;
         }
 
-        if ($status === 'ABORT') {
-            return 'You canceled your order on the payment page.  To avoid adding all your order details again, or if you wish to change your order and resubmit it, or you have any other questions or concerns about ordering online please give us a call on '.env('SITE_PHONE_NUMBER')." and quote reference: BP$orderId.";
-        }
+        if( $runAdmin ){
 
-        if ($status === 'REJECTED') {
-            return 'Your order did not meet our minimum fraud screening requirements. If you have questions about our fraud screening rules, or wish to contact us to discuss this, please give us a call on '.env('SITE_PHONE_NUMBER')." and quote reference: BP$orderId.";
+            GoogleTagManager::set('conversionAmount', $basket['totalPrice']);
+            Mail::to('info@balloonprinting.co.uk')->send( new BonzaConfirmationEmail($basket, $orderDetails, $orderId) );
+            Mail::to($orderDetails['customerContactEmail'])->send( new CustomerConfirmationEmail($orderId) );
+            $order->email_sent = 1;
+            $order->save();
         }
-
-        if ($status === 'INVALID' ||  $status === 'MALFORMED') {
-            return 'We could not process your order because we have been unable to register your transaction with our Payment Gateway. You can place the order over the telephone instead.  To avoid adding all your order details again, please give us a call on '.env('SITE_PHONE_NUMBER')." and quote reference: BP$orderId.";
-        }
-
-        if ($status === 'ERROR') {
-            return 'We could not process your order because our Payment Gateway service was experiencing difficulties. You can place the order over the telephone instead. To avoid adding all your order details again, please give us a call on '.env('SITE_PHONE_NUMBER')." and quote reference: BP$orderId.";
-        }
-
-        return 'The transaction process failed. Please contact us with the date and time of your order and we will investigate. To avoid adding all your order details again, please give us a call on '.env('SITE_PHONE_NUMBER')." and quote reference: BP$orderId.";
     }
 
 }

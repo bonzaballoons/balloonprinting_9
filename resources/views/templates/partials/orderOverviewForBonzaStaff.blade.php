@@ -8,6 +8,7 @@ Customer Phone: <strong>{{ $orderDetails['customerContactPhone'] }}</strong><br>
 <hr>
 
 @if( $basket['hasBonzaProducts'] )
+
     <strong class="font-blue">Bonza Items to be delivered to the following address:</strong>
     <br>
     Recipients Full Name: <strong>{{ $orderDetails['deliveryBonzaFullName'] }}</strong> <br>
@@ -33,6 +34,7 @@ Customer Phone: <strong>{{ $orderDetails['customerContactPhone'] }}</strong><br>
     <br>
     Delivery Date Chosen: <strong> {{ dbToUKDate( $basket['bonzaProductsDeliveryDate'] ) }}</strong>
     <hr>
+
 @endif
 
 @if( $basket['hasHireCollect'] )
