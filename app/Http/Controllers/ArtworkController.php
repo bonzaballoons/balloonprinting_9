@@ -9,3 +9,4 @@ class ArtworkController extends Controller
         return [ 'path' =>  $request->file()['file']->store('artwork', 's3') ];
     }
 }
+
