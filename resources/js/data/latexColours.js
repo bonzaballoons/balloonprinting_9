@@ -24,12 +24,12 @@ let latexSolidColours = [
     { id: 23, name: 'Turquoise', type: 'Solid', pantone: '3135 C', cssColour: '#008EAA'},
     { id: 24, name: 'Vanilla', type: 'Pastel', pantone: '7499 C', cssColour: '#F1E6B2'},
     { id: 25, name: 'White', type: 'Pastel', pantone: '000 C', cssColour: '#FFFFFF'},
-    { id: 26, name: 'Yellow', type: 'Pastel', pantone: '107 C', cssColour: '#FBE122'},
-    { id: 27, name: 'Warm Grey', type: 'Pastel', pantone: '107 C', cssColour: '#b8b1aa'},
-    { id: 28, name: 'Coral', type: 'Pastel', pantone: '107 C', cssColour: '#b8b1aa'},
-    { id: 29, name: 'Grape', type: 'Pastel', pantone: '107 C', cssColour: '#a92382'},
-    { id: 30, name: 'Cyan', type: 'Pastel', pantone: '107 C', cssColour: '#01b2e8'},
-    { id: 31, name: 'Light Green', type: 'Pastel', pantone: '107 C', cssColour: '#9ad4bc'},
+    { id: 26, name: 'Lemon', type: 'Pastel', pantone: '107 C', cssColour: '#FBE122'},
+    { id: 27, name: 'Warm Grey', type: 'Pastel', pantone: '', cssColour: '#b8b1aa'},
+    { id: 28, name: 'Coral', type: 'Pastel', pantone: '', cssColour: '#f37b5e'},
+    { id: 29, name: 'Grape', type: 'Pastel', pantone: '', cssColour: '#a92382'},
+    { id: 30, name: 'Cyan', type: 'Pastel', pantone: '', cssColour: '#01b2e8'},
+    { id: 31, name: 'Light Green', type: 'Pastel', pantone: '', cssColour: '#9ad4bc'},
 ]
 
 

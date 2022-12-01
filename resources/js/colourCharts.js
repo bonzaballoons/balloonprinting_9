@@ -32,7 +32,7 @@ new Vue({
             if( this.foilOrLatexSelected === 'latex'){
                 return 'https://bballoons.s3.amazonaws.com/printingColours/latexPrintingWizard/'+this.latexTypeSelected.folder+'/jpgs/'+_.snakeCase(this.colourSelected.name)+'.jpg';
             }
-            return 'https://bballoons.s3.amazonaws.com/printingColours/foilPrintingWizard/'+this.foilTypeSelected.folder+'/'+_.camelCase(this.colourSelected.name)+'.jpg';
+            return 'https://bballoons.s3.amazonaws.com/printingColours/foilPrintingWizard/'+this.foilTypeSelected.folder+'/jpg/'+_.snakeCase(this.colourSelected.name)+'.jpg';
         }
     }
 

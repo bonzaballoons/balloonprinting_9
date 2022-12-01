@@ -1,7 +1,7 @@
 let allColours = [
     { id: 1, name: 'Silver', pantone: '', cssColour: '#DCDCDC'},
     { id: 2, name: 'Gold', pantone: '', cssColour: '#E8B667'},
-    { id: 3, name: 'Rose Gold', pantone: '', cssColour: '#FCEBDD'},
+    { id: 3, name: 'Rose Gold', pantone: '', cssColour: '#d09286'},
     { id: 4, name: 'Red', pantone: '', cssColour: '#ed2426'},
     { id: 5, name: 'Pink', pantone: '', cssColour: '#eaadcf'},
     { id: 6, name: 'Ivory', pantone: '', cssColour: '#eadac1'},
