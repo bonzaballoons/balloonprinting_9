@@ -19,6 +19,27 @@ class PrintingPrices
         ];
     }
 
+    private static function getGiantLatexPricePerBalloon($data) : float {
+
+        if( $data['typeSelectedName'] === 'Pastel' ){
+
+            if( $data['size'] === 2 ){
+                return $data['sides'] === 1 ? 9 : 13.5;
+            }
+            // 3ft
+            return $data['sides'] === 1 ? 10 : 15;
+        }
+
+        if( $data['typeSelectedName'] === 'Metallic' ){
+
+            if( $data['size'] === 2 ){
+                return $data['sides'] === 1 ? 10 : 15;
+            }
+            // 3ft
+            return $data['sides'] === 1 ? 11 : 16.5;
+        }
+    }
+
     public static function latex($data) : array {
 
         $priceJobCharge = $data['numberColours'] > 1 ? $data['numberColours'] * 3: 0;
@@ -205,6 +226,10 @@ class PrintingPrices
         return $pricePerBalloon;
     }
 
+    private static function testRange($num, $min, $max) : bool{
+        return ( $num >= $min && $num <= $max);
+    }
+
     private static function inkColourPriceWithoutVat(array $inkColourNames){
 
         $freeBracket = ['White', 'Black'];
@@ -264,43 +289,22 @@ class PrintingPrices
 
     private static function getLatexPricePerBalloon($data) : float {
 
-        // Defaults to 12" Pastel/Standard, 12" Crystal/Transparent & 10" Metallic/Pearl - 9p per balloon
-        $price = 0.09;
+        // Defaults to 12" Pastel/Standard(2), 12" Crystal/Transparent (5) - 9p per balloon
+        $price = 0.10;
 
-        // 10" Pastel/Standard or 10" Crystal/Transparent - 8p per balloon
+        // 10" Pastel/Standard(1) or 10" Crystal/Transparent(4) - 8p per balloon
         if( $data['typeSelectedId'] === 1 || $data['typeSelectedId'] === 5 ){
-            $price = 0.08;
+            $price = 0.09;
         }
 
-        // 12" Metallic / Pearl Latex - 10p per balloon
+        // 12" Metallic / Pearl Latex (3) - 10p per balloon
         if( $data['typeSelectedId'] === 4){
-            $price = 0.10;
+            $price = 0.11;
         }
         return $price;
     }
 
-    private static function getGiantLatexPricePerBalloon($data) : float {
 
-        if( $data['typeSelectedName'] === 'Pastel' ){
 
-            if( $data['size'] === 2 ){
-                return $data['sides'] === 1 ? 9 : 13.5;
-            }
-            // 3ft
-            return $data['sides'] === 1 ? 10 : 15;
-        }
 
-        if( $data['typeSelectedName'] === 'Metallic' ){
-
-            if( $data['size'] === 2 ){
-                return $data['sides'] === 1 ? 10 : 15;
-            }
-            // 3ft
-            return $data['sides'] === 1 ? 11 : 16.5;
-        }
-    }
-
-    private static function testRange($num, $min, $max) : bool{
-        return ( $num >= $min && $num <= $max);
-    }
 }
