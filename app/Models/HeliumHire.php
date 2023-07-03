@@ -50,7 +50,7 @@ class HeliumHire extends Product
 
             $cylinder->balloonsCanFill = $balloonDetail['balloonsCanFill'];
             $cylinder->miniDescription = $balloonDetail['miniDesc'];
-            $cylinder->lowestCollectPrice = $cylinder->ap_collect_price;
+            $cylinder->lowestCollectPrice = $cylinder->ap_collect_price ?? $cylinder->boc_collect_price;
 
             return $cylinder;
         });
