@@ -41,12 +41,15 @@
                 </span>
             </label>
         </div>
-        <div>
-            <label>
-                <input type="radio" value="delivered" v-model="collectOrDeliveryPrice">
-                <strong class="text-success"> &nbsp;&pound;{{ $product->details->first()->delivery_price }}</strong>: Have the cylinder delivered to a business address.
-            </label>
-        </div>
+        @if($product->details->first()->delivery_price > 0)
+            <div>
+                <label>
+                    <input type="radio" value="delivered" v-model="collectOrDeliveryPrice">
+                    <strong class="text-success"> &nbsp;&pound;{{ $product->details->first()->delivery_price }}</strong>: Have the cylinder delivered to a business address.
+                </label>
+            </div>
+        @endif
+
         <small v-show="collectOrDeliveryPrice === 'delivered'" class="heading-secondary"> (If you have more than one hire cylinder delivered & collected to the same address at the same time, the second and each subsequent cylinder gets a £20.00 discount. This discount will be applied in the basket.) </small>
     </div>
     <div class="col-md-6">
